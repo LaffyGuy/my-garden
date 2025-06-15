@@ -2,7 +2,7 @@ package com.example.mygarden.core.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.mygarden.gardens.data.source.GardenDao
+//import com.example.mygarden.gardens.data.source.GardenDao
 //import com.example.mygarden.core.data.db.GardenDataBase
 import dagger.Module
 import dagger.Provides
