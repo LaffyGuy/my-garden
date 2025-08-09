@@ -6,9 +6,11 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "garden")
 data class GardenEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    val id: Long = 0,
     val name: String,
     val description: String,
+    val area: Double,
+    val pointsJson: String,
     val imageUri: String,
-    val date: Long
+    val createdAt: Long = System.currentTimeMillis()
 )

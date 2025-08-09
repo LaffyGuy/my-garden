@@ -5,20 +5,24 @@ import com.example.mygarden.gardens.domain.model.Garden
 
 fun GardenEntity.toGarden(): Garden {
     return Garden(
-        id = this.id,
-        name = this.name,
-        description = this.description,
-        imageUri = this.imageUri,
-        date = this.date
+        id = id,
+        name = name,
+        description = description,
+        area = 0.0,
+        pointsJson = pointsJson,
+        imageUri = imageUri,
+        createdAt = createdAt
     )
 }
 
 fun Garden.toGardenEntity(): GardenEntity {
     return GardenEntity(
-        id = this.id,
-        name = this.name,
-        description = this.description,
-        imageUri = this.imageUri,
-        date = this.date
+        id = id,
+        name = name,
+        description = description,
+        area = area,
+        pointsJson = pointsJson,
+        imageUri = imageUri,
+        createdAt = createdAt
     )
 }

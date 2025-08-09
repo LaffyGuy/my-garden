@@ -17,16 +17,5 @@ interface Logger {
         override fun e(exception: Exception, message: String) {
            instance.e(exception, message)
         }
-
-        fun set(logger: Logger) {
-            this.instance = logger
-        }
-
-        fun reset() {
-            instance = DefaultLogger()
-        }
-
     }
-
-
 }

@@ -1,4 +1,5 @@
 [versions]
+accompanistPermissions = "0.34.0"
 agp = "8.5.2"
 kotlin = "2.0.0"
 coreKtx = "1.15.0"
@@ -18,9 +19,20 @@ robolectric = "4.14"
 mockk = "1.13.13"
 roomVersion = "2.7.0"
 coreSplashscreen = "1.0.1"
+coilVersion = "2.5.0"
+retrofitVersion = "2.9.0"
+loggingInterceptorVersion = "4.9.3"
+activityKtx = "1.10.1"
+timber = "5.0.1"
+paging = "3.3.6"
+pagingCompose = "3.4.0-alpha01"
+gsonVersion = "2.11.0"
 
 
 [libraries]
+accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanistPermissions" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gsonVersion" }
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "ktxImmutableCollections"}
@@ -33,6 +45,13 @@ room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomVersi
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
 androidx-room-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
+coil = { module = "io.coil-kt:coil-compose", version.ref = "coilVersion" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofitVersion" }
+logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptorVersion" }
+androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
+androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "paging" }
+
 
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -48,6 +67,7 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

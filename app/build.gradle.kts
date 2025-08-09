@@ -1,3 +1,6 @@
+
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -23,6 +26,18 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        val localProperties = Properties()
+        val localPropertiesFile = rootProject.file("local.properties")
+        if (localPropertiesFile.exists()) {
+            localPropertiesFile.inputStream().use { localProperties.load(it) }
+        }
+
+        buildConfigField(
+            "String",
+            "API_KEY",
+            "\"${localProperties.getProperty("PLANT_API_KEY")}\""
+        )
     }
 
     room {
@@ -47,6 +62,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -56,6 +72,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
 }
 
 dependencies {
@@ -65,6 +82,7 @@ dependencies {
     //Room
     implementation(libs.room.runtime)
     implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.activity.ktx)
     ksp(libs.androidx.room.room.compiler)
 
     //Splash screen
@@ -81,10 +99,32 @@ dependencies {
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.compose)
 
+    //Coil
+    implementation(libs.coil)
+
+    //Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.logging.interceptor)
+    implementation(libs.converter.gson)
+
+    //Timber
+    implementation(libs.timber)
+
+    //Paging
+    implementation(libs.androidx.paging.runtime)
+    implementation(libs.androidx.paging.compose)
+
+
     //Test
     testImplementation(libs.robolectric)
     testImplementation(libs.mockk)
     testImplementation(libs.androidx.ui.test.junit4)
+
+    //Gson
+    implementation(libs.gson)
+
+    implementation(libs.accompanist.permissions)
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
