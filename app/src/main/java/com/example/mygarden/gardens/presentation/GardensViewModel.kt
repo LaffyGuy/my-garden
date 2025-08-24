@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -18,6 +19,13 @@ class GardensViewModel @Inject constructor(private val gardensUseCase: GardensUs
     private val _gardensState = MutableStateFlow<LoadResult<List<Garden>>>(LoadResult.Loading)
     val gardensState: StateFlow<LoadResult<List<Garden>>> = _gardensState.asStateFlow()
 
+    private val _visiblePermissionDialog = MutableStateFlow<List<String>>(emptyList())
+    val visiblePermissionDialog = _visiblePermissionDialog.asStateFlow()
+
+
+    init {
+        loadGardens()
+    }
 
     private fun loadGardens() {
         viewModelScope.launch {
@@ -31,4 +39,16 @@ class GardensViewModel @Inject constructor(private val gardensUseCase: GardensUs
     fun refreshGardens() {
         loadGardens()
     }
+
+
+    fun dismissDialog() {
+        _visiblePermissionDialog.update { it.drop(1) }
+    }
+
+    fun onPermissionResult(permission: String, isGranted: Boolean) {
+        if(!isGranted && !_visiblePermissionDialog.value.contains(permission)) {
+            _visiblePermissionDialog.update { it + permission }
+        }
+    }
+
 }
