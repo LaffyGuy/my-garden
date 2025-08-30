@@ -8,7 +8,7 @@ fun GardenEntity.toDomain(): Garden {
         id = id,
         name = name,
         description = description,
-        area = 0.0,
+        area = area,
         pointsJson = pointsJson,
         imageUri = imageUri,
         createdAt = createdAt
